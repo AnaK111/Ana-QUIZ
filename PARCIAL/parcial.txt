@@ -1,0 +1,39 @@
+-- Ana Karina Largo Ramos
+-- Mayo 24/2017
+-- Admin. BD 
+
+-- Un número enmascarado es una cadena que consta de dígitos y un asterisco que deberia ser enmascarado  exactamente por un dígito.
+-- Dado un número s enmascarados, buscar todas las opciones posibles para reemplazar el asterisco con un digito para producir un
+-- número entero divisible por 6. El nùmero enmascarado  puede ser muy grande
+
+
+-- 2. Create table "mask"
+CREATE TABLE mask (
+  mask varchar2(1000),
+  result varchar2(4000)
+); 
+
+
+CREATE OR REPLACE FUNCTION mask_funtion(x number)
+RETURN number IS
+   z number := 0;
+BEGIN
+  IF 1 >= X and x <= 10000 then
+  REPLACE('*', '123');
+    z := Y;
+  ELSE
+    z := X;
+  END IF;
+  RETURN z;
+END;
+
+
+-- el triger 
+CREATE OR REPLACE TRIGGER add_mask (x)
+  BEFORE UPDATE OF MASK ON MASK FOR EACH ROW 
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Ejecutando TRIGGER, result: ' ||:NEW.result );
+      mask_funtion(:NEW.result);	
+END;
+
+:(
